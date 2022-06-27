@@ -8,22 +8,23 @@ function LastUserInDb() {
     const [ultimoUsuario, setUltimoUser] = useState([])
 
     useEffect(() => {
-        fetch('/api/users')
+        fetch("api/users")
             .then((respuestaApi) => {
                 return respuestaApi.json()
             })
             .then((usuariosApi) => {
-                //console.log(usuariosApi)
-                //const users = usuariosApi.users
-                //console.log('a')
-               // console.log(users)
-                let idUsuarios = usuariosApi.map((users) => {
-                    console.log(idUsuarios)
-                    return users.id
+                let users = usuariosApi.data
+                console.log('data')
+                console.log(users)
+                let idUsuarios = Array.from(users).map((user) => {
+                    return user.id
 
                 })
+                console.log('id')
+                console.log(idUsuarios)
                 let idMayor = Math.max(...idUsuarios)
-                let ultimoUsuario = usuariosApi.find(elemento => elemento.id === idMayor)
+                let ultimoUsuario = Array.from(users).find(elemento => elemento.id === idMayor)
+                console.log('a')
                 console.log(ultimoUsuario);
                 setUltimoUser(ultimoUsuario)
             })
@@ -37,11 +38,11 @@ function LastUserInDb() {
                 </div>
                 <div className="card-body">
                     <div className="text-center">
-                        
+                       
                     </div>
                     <p></p>
-                    <p>Nombre: {ultimoUsuario.nombre} </p>
-                    <p>Apellido: {ultimoUsuario.apellido}</p>
+                    <p>Nombre: {ultimoUsuario.first_name} </p>
+                    <p>Apellido: {ultimoUsuario.last_name}</p>
                     <p>e-Mail: {ultimoUsuario.email}</p>
                 </div>
             </div>
