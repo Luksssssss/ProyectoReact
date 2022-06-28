@@ -14,18 +14,18 @@ function LastUserInDb() {
             })
             .then((usuariosApi) => {
                 let users = usuariosApi.data
-                console.log('data')
-                console.log(users)
+                //console.log('data')
+                //console.log(users)
                 let idUsuarios = Array.from(users).map((user) => {
                     return user.id
 
                 })
-                console.log('id')
-                console.log(idUsuarios)
+                //console.log('id')
+                //console.log(idUsuarios)
                 let idMayor = Math.max(...idUsuarios)
                 let ultimoUsuario = Array.from(users).find(elemento => elemento.id === idMayor)
-                console.log('a')
-                console.log(ultimoUsuario);
+                //console.log('a')
+                //console.log(ultimoUsuario);
                 setUltimoUser(ultimoUsuario)
             })
     }, [])
@@ -37,10 +37,6 @@ function LastUserInDb() {
                     <h6 className="m-0 font-weight-bold text-primary">Ultimo Usuario Creado en la DB</h6>
                 </div>
                 <div className="card-body">
-                    <div className="text-center">
-                       
-                    </div>
-                    <p></p>
                     <p>Nombre: {ultimoUsuario.first_name} </p>
                     <p>Apellido: {ultimoUsuario.last_name}</p>
                     <p>e-Mail: {ultimoUsuario.email}</p>

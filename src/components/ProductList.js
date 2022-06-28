@@ -26,8 +26,8 @@ function ProductList() {
                     <ul>
                         {data.map(item => (
                             <li key={item.id}>
-                                <p> Nombre: "{item.name}" |<br>
-                                </br> Precio: $ {item.precio} |<br></br> 
+                                <p> Nombre: {item.name} <br>
+                                </br> Precio: $ {item.price} <br></br> 
                                 Category: {item.category} </p>
                             </li>
                         ))}
